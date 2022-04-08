@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <title>Simple Login Form</title>
+        <meta charset="UTF-8" />
+        <meta name="Designer" content="PremiumPixels.com">
+        <meta name="Author" content="$hekh@r d-Ziner, CSSJUNTION.com">
+        <link rel="stylesheet" type="text/css" href="https://localhost:44382//Content/cssadmin/reset.css">
+        <link rel="stylesheet" type="text/css" href="https://localhost:44382/Content/cssadmin/structure.css">
+    </head>
+
+    <body>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <form class="box login">
+                <fieldset class="boxBody">
+                    <h4> @ViewBag.Thongbao</h4>
+                    <label>Username</label>
+                    <input name="taikhoan" type="text" tabindex="1" placeholder="Tài khoản admin" required>
+                    @ViewData["Loi1"]
+                    <label><a href="#" class="rLink" tabindex="5">Forget your password?</a>Password</label>
+                    <input name="matkhau" type="password" tabindex="2" required>
+                    @ViewData["Loi2"]
+                </fieldset>
+                <footer>
+                    <label><input type="checkbox" tabindex="3">Keep me logged in</label>
+                    <input type="submit" class="btnLogin" value="Login" tabindex="4">
+                </footer>
+            </form>
+
+            <footer id="main">
+                <a href="http://wwww.cssjunction.com">Simple Login Form (HTML5/CSS3 Coded) by CSS Junction</a> | <a href="http://www.premiumpixels.com">PSD by Premium Pixels</a>
+            </footer>
+        }
+        </body>
+
+</html>

@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HKRESTAURANTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="acckh">
+    <Key>
+      <PropertyRef Name="kh_ma" />
+    </Key>
+    <Property Name="kh_ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kh_taikhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="kh_matkhau" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="kh_tendaydu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="kh_sdt" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="kh_email" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="chitietdatban" Relationship="Self.FK__chitietda__kh_ma__2C3393D0" FromRole="acckh" ToRole="chitietdatban" />
+    <NavigationProperty Name="datban" Relationship="Self.FK__datban__kh_ma__2A4B4B5E" FromRole="acckh" ToRole="datban" />
+  </EntityType>
+  <EntityType Name="adminn">
+    <Key>
+      <PropertyRef Name="admin_ma" />
+    </Key>
+    <Property Name="admin_ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="admin_taikhoan" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="admin_matkhau" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="datban">
+    <Key>
+      <PropertyRef Name="datban_ma" />
+    </Key>
+    <Property Name="datban_ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kh_ma" Type="Int32" />
+    <Property Name="ngaythang" Type="DateTime" Precision="3" />
+    <Property Name="loaiban" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="acckh" Relationship="Self.FK__datban__kh_ma__2A4B4B5E" FromRole="datban" ToRole="acckh" />
+    <NavigationProperty Name="chitietdatban" Relationship="Self.FK_datban" FromRole="datban" ToRole="chitietdatban" />
+  </EntityType>
+  <EntityType Name="loai">
+    <Key>
+      <PropertyRef Name="loai_ma" />
+    </Key>
+    <Property Name="loai_ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loai_ten" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="monan" Relationship="Self.FK__monan__loai_ma__300424B4" FromRole="loai" ToRole="monan" />
+  </EntityType>
+  <EntityType Name="monan">
+    <Key>
+      <PropertyRef Name="monan_ma" />
+    </Key>
+    <Property Name="monan_ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="loai_ma" Type="Int32" />
+    <Property Name="monan_ten" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="monan_hinh" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="monan_gia" Type="Double" Nullable="false" />
+    <Property Name="monan_mota" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="loai" Relationship="Self.FK__monan__loai_ma__300424B4" FromRole="monan" ToRole="loai" />
+  </EntityType>
+  <EntityType Name="chitietdatban">
+    <Key>
+      <PropertyRef Name="datban_ma" />
+    </Key>
+    <Property Name="datban_ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kh_ma" Type="Int32" />
+    <Property Name="songuoi" Type="Int32" />
+    <Property Name="ctdb_tenmon" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="ctdb_thoigian" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="acckh" Relationship="Self.FK__chitietda__kh_ma__2C3393D0" FromRole="chitietdatban" ToRole="acckh" />
+    <NavigationProperty Name="datban" Relationship="Self.FK_datban" FromRole="chitietdatban" ToRole="datban" />
+  </EntityType>
+  <Association Name="FK__chitietda__kh_ma__2C3393D0">
+    <End Role="acckh" Type="Self.acckh" Multiplicity="0..1" />
+    <End Role="chitietdatban" Type="Self.chitietdatban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acckh">
+        <PropertyRef Name="kh_ma" />
+      </Principal>
+      <Dependent Role="chitietdatban">
+        <PropertyRef Name="kh_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__datban__kh_ma__2A4B4B5E">
+    <End Role="acckh" Type="Self.acckh" Multiplicity="0..1" />
+    <End Role="datban" Type="Self.datban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acckh">
+        <PropertyRef Name="kh_ma" />
+      </Principal>
+      <Dependent Role="datban">
+        <PropertyRef Name="kh_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_datban">
+    <End Role="datban" Type="Self.datban" Multiplicity="1" />
+    <End Role="chitietdatban" Type="Self.chitietdatban" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="datban">
+        <PropertyRef Name="datban_ma" />
+      </Principal>
+      <Dependent Role="chitietdatban">
+        <PropertyRef Name="datban_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__monan__loai_ma__300424B4">
+    <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+    <End Role="monan" Type="Self.monan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai">
+        <PropertyRef Name="loai_ma" />
+      </Principal>
+      <Dependent Role="monan">
+        <PropertyRef Name="loai_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HKRESTAURANTEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="acckh" EntityType="Self.acckh" />
+    <EntitySet Name="adminn" EntityType="Self.adminn" />
+    <EntitySet Name="datban" EntityType="Self.datban" />
+    <EntitySet Name="loai" EntityType="Self.loai" />
+    <EntitySet Name="monan" EntityType="Self.monan" />
+    <EntitySet Name="chitietdatban" EntityType="Self.chitietdatban" />
+    <AssociationSet Name="FK__chitietda__kh_ma__2C3393D0" Association="Self.FK__chitietda__kh_ma__2C3393D0">
+      <End Role="acckh" EntitySet="acckh" />
+      <End Role="chitietdatban" EntitySet="chitietdatban" />
+    </AssociationSet>
+    <AssociationSet Name="FK__datban__kh_ma__2A4B4B5E" Association="Self.FK__datban__kh_ma__2A4B4B5E">
+      <End Role="acckh" EntitySet="acckh" />
+      <End Role="datban" EntitySet="datban" />
+    </AssociationSet>
+    <AssociationSet Name="FK_datban" Association="Self.FK_datban">
+      <End Role="datban" EntitySet="datban" />
+      <End Role="chitietdatban" EntitySet="chitietdatban" />
+    </AssociationSet>
+    <AssociationSet Name="FK__monan__loai_ma__300424B4" Association="Self.FK__monan__loai_ma__300424B4">
+      <End Role="loai" EntitySet="loai" />
+      <End Role="monan" EntitySet="monan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "Dangnhap";
+    Layout = "~/Views/Shared/_detail.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+    <form class="login-form" style="background-color:aqua;">
+        
+        <h1 style="text-align:center;">Welcome To HK Restaurant</h1>
+        <hr>
+        <h4> @ViewBag.Thongbao</h4>
+        <input style="width: 100%; height: 40px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" type="text" placeholder="Enter account" @Html.TextBox("kh_taikhoan")  @ViewData["Loi1"] <br />
+        <input style="width: 100%; height: 40px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" type="password" placeholder="Enter Password"@Html.TextBox("kh_matkhau")   @ViewData["Loi2"] <br /> 
+
+        <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px">
+            Remember me
+        </label><br>
+        Forgot Password <a href="#">[Click here]</a>
+        <div class="clearfix">
+            <button type="submit" class="loginbtn">Log In</button>
+        </div>
+    </form>
+    
+}
+<style>
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+    /* Add a background color when the inputs get focus */
+    input[type=text]:focus, input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+ .login-form{
+     background-color:aqua;
+ }
+   
+.signupbtn, .loginbtn {
+    background-color: #088A85;
+    color: var(--second-color);
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+    .signupbtn, .loginbtn:hover {
+        opacity: 1;
+    }
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+    float: left;
+    width: 50%;
+}
+
+.loginbtn {
+    align-items: center;
+    width: 25%;
+}
+/* The Modal (background) */
+
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+
+
+.login-button button {
+    background-color: var(--main-color);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    font-size: 17px;
+}
+    .login-button button:hover {
+        opacity: 1;
+        background-color: #AFEEEE;
+        color: white;
+    }
+
+.logout-button {
+    background-color: var(--main-color);
+    color: var(--second-color);
+}
+</style>

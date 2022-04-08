@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HKRESTAURANT2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="acckh">
+    <Key>
+      <PropertyRef Name="kh_ma" />
+    </Key>
+    <Property Name="kh_ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kh_taikhoan" Type="varchar" MaxLength="20" />
+    <Property Name="kh_matkhau" Type="varchar" MaxLength="16" />
+    <Property Name="kh_tendaydu" Type="nvarchar" MaxLength="30" />
+    <Property Name="kh_sdt" Type="varchar" MaxLength="11" />
+    <Property Name="kh_email" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="adminn">
+    <Key>
+      <PropertyRef Name="admin_ma" />
+    </Key>
+    <Property Name="admin_ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="admin_taikhoan" Type="nvarchar" MaxLength="20" />
+    <Property Name="admin_matkhau" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="chitietdatban">
+    <Key>
+      <PropertyRef Name="ctdb_ma" />
+    </Key>
+    <Property Name="kh_ma" Type="int" Nullable="false" />
+    <Property Name="songuoi" Type="int" />
+    <Property Name="ctdb_tenmon" Type="nvarchar" MaxLength="30" />
+    <Property Name="ctdb_thoigian" Type="nvarchar" MaxLength="30" />
+    <Property Name="ctdb_ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datban_ma" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="datban">
+    <Key>
+      <PropertyRef Name="datban_ma" />
+    </Key>
+    <Property Name="datban_ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kh_ma" Type="int" />
+    <Property Name="ngaythang" Type="datetime" />
+    <Property Name="loaiban" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="loai">
+    <Key>
+      <PropertyRef Name="loai_ma" />
+    </Key>
+    <Property Name="loai_ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loai_ten" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="monan">
+    <Key>
+      <PropertyRef Name="monan_ma" />
+    </Key>
+    <Property Name="monan_ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="loai_ma" Type="int" />
+    <Property Name="monan_ten" Type="varchar" MaxLength="30" />
+    <Property Name="monan_hinh" Type="varchar" MaxLength="30" />
+    <Property Name="monan_gia" Type="float" Nullable="false" />
+    <Property Name="monan_mota" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_chitietdatban_datban">
+    <End Role="datban" Type="Self.datban" Multiplicity="1" />
+    <End Role="chitietdatban" Type="Self.chitietdatban" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="datban">
+        <PropertyRef Name="datban_ma" />
+      </Principal>
+      <Dependent Role="chitietdatban">
+        <PropertyRef Name="ctdb_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_datban_acckh">
+    <End Role="acckh" Type="Self.acckh" Multiplicity="0..1" />
+    <End Role="datban" Type="Self.datban" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acckh">
+        <PropertyRef Name="kh_ma" />
+      </Principal>
+      <Dependent Role="datban">
+        <PropertyRef Name="kh_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_monan_loai">
+    <End Role="loai" Type="Self.loai" Multiplicity="0..1" />
+    <End Role="monan" Type="Self.monan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loai">
+        <PropertyRef Name="loai_ma" />
+      </Principal>
+      <Dependent Role="monan">
+        <PropertyRef Name="loai_ma" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HKRESTAURANT2ModelStoreContainer">
+    <EntitySet Name="acckh" EntityType="Self.acckh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="adminn" EntityType="Self.adminn" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="chitietdatban" EntityType="Self.chitietdatban" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="datban" EntityType="Self.datban" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="loai" EntityType="Self.loai" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="monan" EntityType="Self.monan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_chitietdatban_datban" Association="Self.FK_chitietdatban_datban">
+      <End Role="datban" EntitySet="datban" />
+      <End Role="chitietdatban" EntitySet="chitietdatban" />
+    </AssociationSet>
+    <AssociationSet Name="FK_datban_acckh" Association="Self.FK_datban_acckh">
+      <End Role="acckh" EntitySet="acckh" />
+      <End Role="datban" EntitySet="datban" />
+    </AssociationSet>
+    <AssociationSet Name="FK_monan_loai" Association="Self.FK_monan_loai">
+      <End Role="loai" EntitySet="loai" />
+      <End Role="monan" EntitySet="monan" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

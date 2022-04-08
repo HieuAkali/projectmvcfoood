@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Detailll";
+    Layout = "~/Views/Shared/_detail.cshtml";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">@Model.monan_ten</h3>
+
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6">
+                    <div class="white-box text-center"><img src="~/Content/images/@Model.monan_hinh" class="img-responsive"></div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4 class="box-title mt-5">Mô tả sản phẩm</h4>
+                    <p>@Model.monan_mota</p>
+                    <h2 class="mt-5">
+                      Giá:  @Model.monan_gia VND
+                    </h2>
+                </div>
+                
+            </div>
+        </div>
+     </div>
+ </div>

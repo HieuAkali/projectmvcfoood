@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="49affd26-fda0-4114-97ad-eadb6c17a5c1" absoluteBounds="0.75, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClasses1DataContext/acckh" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eedabf78-b94e-44af-8da2-dffe9ac0d63c" absoluteBounds="0.765, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="71d0705e-e4d8-4fc6-b73d-78239ec8b6e6" absoluteBounds="0.75, 6.75, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/DataClasses1DataContext/adminn" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c0a2ccb1-68fb-4df1-9701-39a4aafb11a9" absoluteBounds="0.765, 7.21, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a96d2dc1-374e-4dc6-9bf4-af8061e1ddd0" absoluteBounds="6.25, 0.875, 2, 1.9631982421875">
+      <DataClassMoniker Name="/DataClasses1DataContext/chitietdatban" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa453e6b-ae67-4164-be42-2e1cb3b0e067" absoluteBounds="6.265, 1.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0aa6dc8b-837d-4181-af53-6bb5781ada06" absoluteBounds="3.5, 1.125, 2, 1.5785953776041663">
+      <DataClassMoniker Name="/DataClasses1DataContext/datban" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3539360a-de1e-4dba-bc09-da1515098f97" absoluteBounds="3.515, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9e3b900a-0d45-49cd-96c7-dac67a9ee054" absoluteBounds="0.75, 4.25, 2, 1.1939925130208326">
+      <DataClassMoniker Name="/DataClasses1DataContext/loai" />
+      <nestedChildShapes>
+        <elementListCompartment Id="293c4eaa-7db9-4d28-9048-f7253748f33a" absoluteBounds="0.765, 4.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47f1d835-9f66-4ee5-b4a3-59a9c0d1ca8f" absoluteBounds="3.5, 3.875, 2, 1.9631982421875005">
+      <DataClassMoniker Name="/DataClasses1DataContext/monan" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cc0b26db-1bc9-4dca-9646-3d7456b4901a" absoluteBounds="3.515, 4.335, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 1.91429768880208); (6.25 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/datban/datban_chitietdatban" />
+      <nodes>
+        <classShapeMoniker Id="0aa6dc8b-837d-4181-af53-6bb5781ada06" />
+        <classShapeMoniker Id="a96d2dc1-374e-4dc6-9bf4-af8061e1ddd0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 1.91429768880208); (3.5 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/acckh/acckh_datban" />
+      <nodes>
+        <classShapeMoniker Id="49affd26-fda0-4114-97ad-eadb6c17a5c1" />
+        <classShapeMoniker Id="0aa6dc8b-837d-4181-af53-6bb5781ada06" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 4.84699625651042); (3.5 : 4.84699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/loai/loai_monan" />
+      <nodes>
+        <classShapeMoniker Id="9e3b900a-0d45-49cd-96c7-dac67a9ee054" />
+        <classShapeMoniker Id="47f1d835-9f66-4ee5-b4a3-59a9c0d1ca8f" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

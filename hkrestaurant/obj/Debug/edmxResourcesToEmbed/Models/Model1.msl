@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HKRESTAURANTModel1StoreContainer" CdmEntityContainer="HKRESTAURANTEntities4">
+    <EntitySetMapping Name="acckh">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.acckh">
+        <MappingFragment StoreEntitySet="acckh">
+          <ScalarProperty Name="kh_ma" ColumnName="kh_ma" />
+          <ScalarProperty Name="kh_taikhoan" ColumnName="kh_taikhoan" />
+          <ScalarProperty Name="kh_matkhau" ColumnName="kh_matkhau" />
+          <ScalarProperty Name="kh_tendaydu" ColumnName="kh_tendaydu" />
+          <ScalarProperty Name="kh_sdt" ColumnName="kh_sdt" />
+          <ScalarProperty Name="kh_email" ColumnName="kh_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="adminn">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.adminn">
+        <MappingFragment StoreEntitySet="adminn">
+          <ScalarProperty Name="admin_ma" ColumnName="admin_ma" />
+          <ScalarProperty Name="admin_taikhoan" ColumnName="admin_taikhoan" />
+          <ScalarProperty Name="admin_matkhau" ColumnName="admin_matkhau" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="chitietdatban">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.chitietdatban">
+        <MappingFragment StoreEntitySet="chitietdatban">
+          <ScalarProperty Name="datban_ma" ColumnName="datban_ma" />
+          <ScalarProperty Name="kh_ma" ColumnName="kh_ma" />
+          <ScalarProperty Name="songuoi" ColumnName="songuoi" />
+          <ScalarProperty Name="ctdb_tenmon" ColumnName="ctdb_tenmon" />
+          <ScalarProperty Name="ctdb_thoigian" ColumnName="ctdb_thoigian" />
+          <ScalarProperty Name="ctdb_ma" ColumnName="ctdb_ma" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="datban">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.datban">
+        <MappingFragment StoreEntitySet="datban">
+          <ScalarProperty Name="datban_ma" ColumnName="datban_ma" />
+          <ScalarProperty Name="kh_ma" ColumnName="kh_ma" />
+          <ScalarProperty Name="ngaythang" ColumnName="ngaythang" />
+          <ScalarProperty Name="loaiban" ColumnName="loaiban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loai">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.loai">
+        <MappingFragment StoreEntitySet="loai">
+          <ScalarProperty Name="loai_ma" ColumnName="loai_ma" />
+          <ScalarProperty Name="loai_ten" ColumnName="loai_ten" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="monan">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.monan">
+        <MappingFragment StoreEntitySet="monan">
+          <ScalarProperty Name="monan_ma" ColumnName="monan_ma" />
+          <ScalarProperty Name="loai_ma" ColumnName="loai_ma" />
+          <ScalarProperty Name="monan_ten" ColumnName="monan_ten" />
+          <ScalarProperty Name="monan_hinh" ColumnName="monan_hinh" />
+          <ScalarProperty Name="monan_gia" ColumnName="monan_gia" />
+          <ScalarProperty Name="monan_mota" ColumnName="monan_mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HKRESTAURANTModel1.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

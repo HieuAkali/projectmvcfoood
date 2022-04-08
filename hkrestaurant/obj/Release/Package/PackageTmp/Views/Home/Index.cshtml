@@ -1,0 +1,232 @@
+﻿@model hkrestaurant.Models.HomeModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<section id="aboutus" class="about section-pading ">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h2>About Us</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="about-item" data-aos="fade-up-right" data-aos-easing="linear" data-aos-duration="1500">
+                <h2>WELCOME TO HK RESTAURANT</h2>
+                <p>
+                    Our restaurant was established and grown in 2008 after those arduous days. The finest dishes of
+                    Europe can be found right on the menu of our restaurant.
+                    If the cooking method creates the soul of a dish, the ingredients make up its body. Kien
+                    Restaurant has chosen a rather thorny path in choosing ingredients for its dishes, and has
+                    written its own story.
+                    With a menu of European dishes, the restaurant has worked hard to find the source of fresh
+                    European ingredients right after the harvest.
+                    The restaurant has a rich menu to satisfy the dining needs of customers.
+                </p>
+            </div>
+            <div class="about-item" data-aos="fade-up-left" data-aos-easing="linear" data-aos-duration="1500">
+                <div class="about-item-img">
+                    <span>+10 years of experience</span>
+                    <img src="~/Content/images/content1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--------------------------------------SIGNUP--------------------------------------->
+<!--------------------------------------------------------MENU---------------------------------------------------->
+<section id="menu" class="menu section-pading">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h2>MENU LIST</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-title">
+                @foreach (var item in Model.ListLoai)
+                {
+                    <button class="menu-button" data-title="@item.loai_ma">@item.loai_ten</button>
+                   
+                        }
+                </div>
+            </div>
+        <div style="display: grid; grid-template-columns: repeat(2,1fr);">
+            @foreach (var item in Model.ListMonAn)
+            {
+                <div class="menu-content" id="@item.loai_ma">
+                    <div class="list-items">
+                        <a href="@Url.Action("Detailll", "Home", new { id = item.monan_ma })">
+                            <div class="list-item">
+
+                                <img src="@Url.Content("~/Content/images/" +@item.monan_hinh)" alt="">
+
+                                
+
+
+                            </div>
+                        </a>
+                        <div class="list-price">
+                            <p>@item.monan_ten</p>
+                            <p>@item.monan_gia VND</p>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+
+        </div>
+</section>
+
+
+<!---------------------------------------------Some foods------------------------------------------->
+<section id="gallery" class="some-foods">
+    <div class="title">
+        <h2>our gallery</h2>
+    </div>
+    <div class="some-foods container row">
+        <div class="some-foods-item">
+            <h2>Pan-fried Salmon</h2>
+            <img src="https://localhost:44382/Content/images/br1.jpg" alt="">
+        </div>
+        <div class="some-foods-item">
+            <h2>Vegetarian Salad </h2>
+            <img src="https://localhost:44382/Content/images/br2.jpg" alt="">
+        </div>
+        <div class="some-foods-item">
+            <h2>Chicken Breast Salad</h2>
+            <img src="https://localhost:44382/Content/images/br3.jpg" alt="">
+        </div>
+        <div class="some-foods-item">
+            <h2>Goose Breast</h2>
+            <img src="https://localhost:44382/Content/images/br4.jpg" alt="">
+        </div>
+        <div class="some-foods-item">
+            <h2>Dessert</h2>
+            <img src="https://localhost:44382/Content/images/br5.jpg" alt="">
+        </div>
+        <div class="some-foods-item">
+            <h2>Vegetarian Sandwich</h2>
+            <img src="https://localhost:44382/Content/images/sandwich.jpg" alt="">
+        </div>
+    </div>
+</section>
+<!----------------------------------ROOM------------------------------------>
+<section id="room" class="room">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h2>Party Room</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="room-items">
+                <img src="~/Content/images/room1.jpg" alt="">
+                <div class="room-items-text">
+                    <h2>COUPLE</h2>
+                    <p>Capacity 2-3 peoples,suitable for Couple</p>
+                </div>
+            </div>
+            <div class="room-items">
+                <img src="~/Content/images/family.jpg" alt="">
+                <div class="room-items-text">
+                    <h2>FAMILY</h2>
+                    <p>Capacity 8-10 peoples,suitable for Family</p>
+                </div>
+            </div>
+            <div class="room-items">
+                <img src="~/Content/images/vip2.jpg" alt="">
+                <div class="room-items-text">
+                    <h2>VIP</h2>
+                    <p>
+                        Capacity 10-15 peoples.Completely private room. Separate entrance. Private party menu options
+                        available
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<script src="~/Scripts/script.js"></script>
+<style>
+    .menu {
+        background-color: #1e3d59;
+        padding-top:80px;
+    }
+    .menu-title {
+        padding-top: 30px;
+        width: 100%;
+        text-align: center;
+    }
+    menu-title .menu-button {
+        background-color: transparent;
+        margin: 10px 12px;
+        border: none;
+        font-size: 20px;
+        color: #F5D0A9;
+        cursor: pointer;
+        align-items: center;
+        padding-bottom: 40px;
+    }
+    .menu-title .menu-button.active {
+        color: #FA5858;
+    }
+
+    .menu-title .menu-button:hover {
+        color: #FA5858;
+    }
+    .list-items {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        cursor: context-menu;
+        position: relative;
+        padding-bottom: 30px;
+    }
+        .list-items ::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            bottom: 0;
+            border: .01px dotted black;
+            opacity: 0.2;
+        }
+    .list-item {
+        display: flex;
+        align-items: center;
+    }
+        .list-item img {
+            width: 130px;
+            height: 90px;
+            margin-right: 25px;
+            padding-bottom: 14px;
+        }
+        .list-item p {
+            color: #F5D0A9;
+            transition: all .3s ease;
+            font-size: 20px;
+        }
+
+    .list-price p {
+        color: #F5D0A9;
+        transition: all .3s ease;
+        font-size: 20px;
+    }
+
+    .menu-content {
+        display: none;
+    }
+
+        .menu-content.active {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+</style>

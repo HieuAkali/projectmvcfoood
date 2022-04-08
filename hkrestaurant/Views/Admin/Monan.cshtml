@@ -1,0 +1,66 @@
+﻿@using hkrestaurant.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<hkrestaurant.Models.monan>
+
+
+
+@{
+    ViewBag.Title = "Monan";
+Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sach Monan</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ThemMonan")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().loai_ma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().monan_ten)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().monan_gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().monan_mota)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.loai.loai_ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monan_ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monan_gia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monan_mota)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.monan_ma }) |
+                @Html.ActionLink("Details", "Chitiet", new { id = item.monan_ma }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.monan_ma })
+            </td>
+        </tr>
+    }
+
+</table>
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, Page => Url.Action("monan", new {Page=Page}))
+</div>
+<style>
+        .MenuTrang li{
+            display:inline;
+        }
+</style>

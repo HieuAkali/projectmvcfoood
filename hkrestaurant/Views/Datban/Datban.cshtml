@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "Datban";
+    Layout = "~/Views/Shared/_detail.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+<section id='booking' class="booking section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="title">
+                <h1>BOOKING</h1>
+            </div>
+        </div>
+        <div class="booking-form">
+            <form method="post" class="form-control">
+                <p>PLEASE FILL OUT ALL FIELDS. THANKS!</p>
+                <div class="row justify-content">
+                    <div>
+
+                    </div>
+                    <div class="form-group">
+
+                        <input style="width: 100%; height: 40px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" type="date" placeholder="Day and time you will come" @Html.TextBox("ngaythang") @ViewData["Loi1"] <br />
+                    </div>
+                    <div class="form-group">
+                        <select style="width: 100%; height: 40px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" placeholder="Loại Bàn" @Html.TextBox("loaiban")>
+                            <option> Loại Bàn</option>
+                            <option> VIP</option>
+                            <option> Family</option>
+                            <option> Couple</option>
+                        </select>
+                        
+                    </div>
+                    <div class="form-group">
+
+                        <input style="width: 100%; height: 40px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" type="number" placeholder="Number of guets" @Html.TextBox("songuoi") @ViewData["Loi3"] <br />
+                    </div>
+                    <div class="form-group">
+
+                        <input style="width: 100%; height: 40px; margin: 5px 0 22px 0; border: none; background: #f1f1f1;" type="text" placeholder="Food" @Html.TextBox("ctdb_tenmon") @ViewData["Loi4"] <br />
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <h3>Đặt cọc trước :</h3>
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AZugnxlVXwH4lAB1ekFfi5DwrYeRPR8t6f4YnU0Pqm4eIZxg-hzzSXr8LnkeiQP1F4jhrxMUQzb0ollL"></script>
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
+    <script>
+        paypal.Buttons({
+            // Sets up the transaction when a payment button is clicked
+            createOrder: (data, actions) => {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '77.44' // Can also reference a variable or function
+                        }
+                    }]
+                });
+            },
+            // Finalize the transaction after payer approval
+            onApprove: (data, actions) => {
+                return actions.order.capture().then(function (orderData) {
+                    // Successful capture! For dev/demo purposes:
+                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                    const transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+                    // When ready to go live, remove the alert and show a success message within this page. For example:
+                    // const element = document.getElementById('paypal-button-container');
+                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                    // Or go to another URL:  actions.redirect('thank_you.html');
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+    <button type="submit" name="booking" style=" border: 2px black; border-radius: 10px; background-color: #99FFCC; padding: 10px 30px; color: black; transition: all .3s ease; cursor: pointer;">SUBMIT</button>
+
+
+</section>
+}
+
+

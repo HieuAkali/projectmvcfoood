@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HKRESTAURANT2" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=HKRESTAURANT2;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HKRESTAURANT2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.acckh" Member="acckhs">
+    <Type Name="acckh">
+      <Column Name="kh_ma" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kh_taikhoan" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="kh_matkhau" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+      <Column Name="kh_tendaydu" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="kh_sdt" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="kh_email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="acckh_datban" Member="datbans" ThisKey="kh_ma" OtherKey="kh_ma" Type="datban" />
+    </Type>
+  </Table>
+  <Table Name="dbo.adminn" Member="adminns">
+    <Type Name="adminn">
+      <Column Name="admin_ma" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="admin_taikhoan" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="admin_matkhau" Type="System.String" DbType="VarChar(16)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.chitietdatban" Member="chitietdatbans">
+    <Type Name="chitietdatban">
+      <Column Name="kh_ma" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="songuoi" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ctdb_tenmon" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ctdb_thoigian" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ctdb_ma" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="datban_ma" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="datban_chitietdatban" Member="datban" ThisKey="ctdb_ma" OtherKey="datban_ma" Type="datban" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.datban" Member="datbans">
+    <Type Name="datban">
+      <Column Name="datban_ma" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kh_ma" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ngaythang" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="loaiban" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="datban_chitietdatban" Member="chitietdatban" ThisKey="datban_ma" OtherKey="ctdb_ma" Type="chitietdatban" Cardinality="One" />
+      <Association Name="acckh_datban" Member="acckh" ThisKey="kh_ma" OtherKey="kh_ma" Type="acckh" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.loai" Member="loais">
+    <Type Name="loai">
+      <Column Name="loai_ma" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="loai_ten" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="loai_monan" Member="monans" ThisKey="loai_ma" OtherKey="loai_ma" Type="monan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.monan" Member="monans">
+    <Type Name="monan">
+      <Column Name="monan_ma" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="loai_ma" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="monan_ten" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="monan_hinh" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="monan_gia" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="monan_mota" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="loai_monan" Member="loai" ThisKey="loai_ma" OtherKey="loai_ma" Type="loai" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

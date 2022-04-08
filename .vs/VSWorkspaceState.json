@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\hkrestaurant",
+    "\\hkrestaurant\\App_Start",
+    "\\hkrestaurant\\Controllers",
+    "\\hkrestaurant\\Models",
+    "\\hkrestaurant\\Views",
+    "\\hkrestaurant\\Views\\Admin",
+    "\\hkrestaurant\\Views\\Home",
+    "\\hkrestaurant\\Views\\Shared",
+    "\\hkrestaurant\\Views\\User"
+  ],
+  "SelectedNode": "\\hkrestaurant.sln",
+  "PreviewInSolutionExplorer": false
+}

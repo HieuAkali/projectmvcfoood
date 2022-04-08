@@ -1,0 +1,58 @@
+﻿@model hkrestaurant.Models.monan
+
+@{
+    ViewBag.Title = "Chitiet";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>THong tin mon an</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Loai ma :
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.loai_ma)
+        </dd>
+
+        <dt>
+            Ten mon an :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monan_ten)
+        </dd>
+
+        <dt>
+            Hinh anh :
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/Content/images/"+ Model.monan_hinh)" width="120px" />
+        </dd>
+
+        <dt>
+            Gia
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monan_gia)
+        </dd>
+
+        <dt>
+            Mo ta :
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.monan_mota)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.monan_ma }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
